@@ -3543,12 +3543,13 @@ dependencies = [
  "frame-system-benchmarking",
  "frame-system-rpc-runtime-api",
  "hex-literal",
+ "pallet-assets",
  "pallet-aura",
  "pallet-balances",
  "pallet-grandpa",
  "pallet-randomness-collective-flip",
  "pallet-sudo",
- "pallet-template",
+ "pallet-swap",
  "pallet-timestamp",
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc-runtime-api",
@@ -3722,6 +3723,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-assets"
+version = "2.0.1"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "serde",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
 name = "pallet-aura"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3863,7 +3876,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "pallet-template"
+name = "pallet-swap"
 version = "2.0.1"
 dependencies = [
  "frame-support",
