@@ -70,7 +70,7 @@ decl_module! {
             amount: T::Balance
         ) -> DispatchResult {
             let from = ensure_signed(origin)?;
-            Self::transfer(from, id, to, amount);
+            Self::transfer(from, id, to, amount)?;
 
             Ok(())
         }
