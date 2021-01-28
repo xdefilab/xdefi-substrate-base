@@ -109,19 +109,19 @@ decl_storage! {
         Owner get(fn owner) config(): T::AccountId;
     }
     
-    add_extra_genesis {
-        config(assets): Vec<(T::AccountId, T::Balance)>;
+    // add_extra_genesis {
+    //     config(assets): Vec<(T::AccountId, T::Balance)>;
 
-        build(|config: &GenesisConfig<T>| {
-            for asset in config.assets.iter() {
-                let (account, amount) = asset;
-                <Module<T>>::_issue(account.clone(), amount.clone());
-                let to_account = <Owner<T>>::get();
-                let asset_id = <NextAssetId<T>>::get() - 1.into();
-                <Module<T>>::transfer(account.clone(), asset_id, to_account, 50000.into());
-            }
-        })
-    }
+    //     build(|config: &GenesisConfig<T>| {
+    //         for asset in config.assets.iter() {
+    //             let (account, amount) = asset;
+    //             <Module<T>>::_issue(account.clone(), amount.clone());
+    //             let to_account = <Owner<T>>::get();
+    //             let asset_id = <NextAssetId<T>>::get() - 1.into();
+    //             <Module<T>>::transfer(account.clone(), asset_id, to_account, 50000.into());
+    //         }
+    //     })
+    // }
 }
 
 impl<T: Trait> Module<T> {

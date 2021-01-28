@@ -38,9 +38,6 @@ pub use frame_support::{
 	},
 };
 
-/// Import the template pallet.
-pub use pallet_template;
-
 /// An index to a block.
 pub type BlockNumber = u32;
 
@@ -63,6 +60,8 @@ pub type Index = u32;
 
 /// A hash of some data used by the chain.
 pub type Hash = sp_core::H256;
+
+pub type AssetId = u64;
 
 /// Digest item type.
 pub type DigestItem = generic::DigestItem<Hash>;
@@ -261,9 +260,12 @@ impl pallet_sudo::Trait for Runtime {
 	type Call = Call;
 }
 
-/// Configure the template pallet in pallets/template.
-impl pallet_template::Trait for Runtime {
-	type Event = Event;
+pub use pallet_assets;
+
+impl pallet_assets::Trait for Runtime {
+    type Event = Event;
+    type Balance = Balance;
+    type AssetId = AssetId;
 }
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
@@ -281,8 +283,9 @@ construct_runtime!(
 		Balances: pallet_balances::{Module, Call, Storage, Config<T>, Event<T>},
 		TransactionPayment: pallet_transaction_payment::{Module, Storage},
 		Sudo: pallet_sudo::{Module, Call, Config<T>, Storage, Event<T>},
-		// Include the custom logic from the template pallet in the runtime.
-		TemplateModule: pallet_template::{Module, Call, Storage, Event<T>},
+
+		Assets: pallet_assets::{Module, Call, Storage, Event<T>},		
+
 	}
 );
 
