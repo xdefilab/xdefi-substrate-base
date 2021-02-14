@@ -3875,6 +3875,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-swap"
+version = "2.0.1"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
 name = "pallet-timestamp"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
